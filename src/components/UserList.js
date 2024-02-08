@@ -4,6 +4,7 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import UsersModal from "./UsersModal";
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@material-ui/core";
 
 export const UserList = () => {
   const [usersInView, setUsersInView] = useState([]);
@@ -25,12 +26,33 @@ export const UserList = () => {
           The following Users are currently visible based on position and screen size.
         </Typography>
       </Box>
-      {usersInView.length === 0 && (
+      {usersInView.length === 0 ? (
         <Box my={4}>
           <Typography component="p" gutterBottom>
             There are currently no users within view.
           </Typography>
         </Box>
+      ):(
+        <TableContainer>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Username</TableCell>
+                <TableCell>Distance</TableCell>
+                <TableCell>Is Broadcaster</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {usersInView.map((user) => (
+                <TableRow key={user.id}>
+                  <TableCell>{user.username}</TableCell>
+                  <TableCell>{user.distance}</TableCell>
+                  <TableCell>{user.is_broadcaster ? "Yes" : "No"}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
       )}
     </Container>
     </>
