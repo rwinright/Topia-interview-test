@@ -20,42 +20,55 @@ export const UserList = () => {
 
   return (
     <>
-    <UsersModal handleUsersInView={handleUsersInView} />
-    <Container maxWidth="md">
-      <Box my={4}>
-        <Typography variant="h5" component="h1" gutterBottom>
-          The following Users are currently visible based on position and screen size.
-        </Typography>
-      </Box>
-      {usersInView.length === 0 ? (
+      <UsersModal handleUsersInView={handleUsersInView} />
+      <Container maxWidth="md">
         <Box my={4}>
-          <Typography component="p" gutterBottom>
-            There are currently no users within view.
+          <Typography variant="h5" component="h1" gutterBottom>
+            The following Users are currently visible based on position and screen size.
           </Typography>
         </Box>
-      ):(
-        <TableContainer>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Username</TableCell>
-                <TableCell>Distance</TableCell>
-                <TableCell>Is Broadcaster</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {usersInView.map((user) => (
-                <TableRow key={user.id}>
-                  <TableCell>{user.username}</TableCell>
-                  <TableCell>{user.distance}</TableCell>
-                  <TableCell>{user.is_broadcaster ? "Yes" : "No"}</TableCell>
+        {usersInView.length === 0 ? (
+          <Box my={4}>
+            <Typography component="p" gutterBottom>
+              There are currently no users within view.
+            </Typography>
+          </Box>
+        ) : (
+          <TableContainer>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Username</TableCell>
+                  <TableCell>Distance</TableCell>
+                  <TableCell>Is Broadcaster</TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      )}
-    </Container>
+              </TableHead>
+              <TableBody>
+                {usersInView.map((user) => (
+                  <TableRow key={user.id}>
+                    <TableCell>{user.username}</TableCell>
+                    <TableCell>{user.distance}</TableCell>
+                    <TableCell>
+                      <span style={{ display: "flex", alignItems: "center" }}>
+                        <span
+                          style={{
+                            display: "inline-block",
+                            width: "12px",
+                            height: "12px",
+                            marginRight: "4px",
+                            borderRadius: "2px",
+                            backgroundColor: user.is_broadcaster ? "green" : "grey",
+                          }}
+                        ></span>
+                      </span>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        )}
+      </Container>
     </>
   );
 };

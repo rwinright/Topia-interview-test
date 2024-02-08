@@ -21,7 +21,7 @@ export default function listUsersInView(users, positionX, positionY, screenWidth
       avatarCenterY <= positionY + screenHeight
     );
   })
-    .sort((a, b) => { //I'm going to add the sort here since there's no reason to place it in the view.
+    .sort((a, b) => { 
       const distanceA = Math.sqrt(Math.pow(a.x + avatarwidth - positionX, 2) + Math.pow(a.y + avatarheight - positionY, 2));
       const distanceB = Math.sqrt(Math.pow(b.x + avatarwidth - positionX, 2) + Math.pow(b.y + avatarheight - positionY, 2));
 
