@@ -1,6 +1,8 @@
 export default function listUsersInView(users, positionX, positionY, screenWidth, screenHeight) {
   let usersInView = [];
 
+  console.log(users, positionX, positionY, screenWidth, screenHeight);
+
   // WRITE SOLUTION BELOW. ADD USERNAME AND IS_BROADCASTER TO 'usersInView' IF USER FALLS INTO VISIBLE RANGE
 
   // Avatar center is used to determine if the user is in view

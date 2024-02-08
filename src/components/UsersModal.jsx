@@ -20,7 +20,10 @@ const UsersModal = ({ handleUsersInView }) => {
   };
 
   useEffect(() => {
-
+    setScreenSize({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    })
     window.addEventListener('resize', () => {
       setScreenSize({
         width: window.innerWidth,
@@ -34,29 +37,6 @@ const UsersModal = ({ handleUsersInView }) => {
       <Button variant="contained" color="primary" onClick={handleOpen}>
         Create User List
       </Button>
-      {/* <Modal open={open} onClose={handleClose}>
-        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: 'white', padding: '20px' }}>
-          <h2>Modal</h2>
-          <TextField
-            label="Position"
-            value={position}
-            onChange={handlePositionChange}
-          />
-          <TextField
-            label="Width"
-            value={screenSize.width}
-            onChange={handleScreenSizeChange('width')}
-          />
-          <TextField
-            label="Height"
-            value={screenSize.height}
-            onChange={handleScreenSizeChange('height')}
-          />
-          <Button variant="contained" color="primary" onClick={handleClose}>
-            Close Modal
-          </Button>
-        </div>
-      </Modal> */}
 
       <Modal open={open} onClose={handleClose}>
         <Box sx={
@@ -86,7 +66,7 @@ const UsersModal = ({ handleUsersInView }) => {
             type={'number'}
             onChange={e => setPosition({
               ...position,
-              x: e.target.value
+              x: Number(e.target.value)
             })} />
 
           <TextField
@@ -96,7 +76,7 @@ const UsersModal = ({ handleUsersInView }) => {
             type={'number'}
             onChange={e => setPosition({
               ...position,
-              y: e.target.value
+              y: Number(e.target.value)
             })} />
 
 

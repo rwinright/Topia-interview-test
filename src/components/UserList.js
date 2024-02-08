@@ -14,6 +14,7 @@ export const UserList = () => {
   // Add a list of the users in view in the render statement below
 
   const handleUsersInView = (users, positionX, positionY, screenWidth, screenHeight) => {
+    setUsersInView([]); // Clear the usersInView state
     setUsersInView(listUsersInView(users, positionX, positionY, screenWidth, screenHeight));
   };
 
